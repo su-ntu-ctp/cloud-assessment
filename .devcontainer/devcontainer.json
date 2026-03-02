@@ -1,0 +1,25 @@
+{
+  "name": "SCTP Cloud Engineering Assessment Environment",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {}
+  },
+
+  "postCreateCommand": "pip install pytest",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylint",
+        "ms-python.debugpy"
+      ],
+      "settings": {
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestArgs": ["."]
+      }
+    }
+  }
+}
