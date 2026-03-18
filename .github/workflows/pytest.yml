@@ -8,7 +8,7 @@ on:
       - solution
 
 jobs:
-  test:
+  run-pytest:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.14' # You can change this to your preferred version
+          python-version: "3.14"
 
       - name: Install dependencies
         run: |
@@ -34,3 +34,24 @@ jobs:
         uses: test-summary/action@v2
         with:
           paths: "results.xml"
+
+      - name: Show test results
+        if: ${{ always() }}
+        uses: test-summary/action@v2
+        with:
+          paths: "results.xml"
+
+      - name: Show test results
+        if: always()
+        uses: test-summary/action@v2
+        with:
+          paths: "results.xml"
+
+      - name: Show test report
+        if: always()
+        uses: pmeier/pytest-results-action@main
+        with:
+          path: results.xmlyou
+          summary: true
+          display-options: fEX
+
